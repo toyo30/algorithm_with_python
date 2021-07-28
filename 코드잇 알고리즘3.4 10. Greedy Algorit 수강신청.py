@@ -18,20 +18,30 @@
 # course_selection은 파라미터로 전체 수업 리스트를 받고 가능한 많은 수업을 담은 리스트를 리턴합니다.
 
 def course_selection(course_list):
-    # 코드를 작성하세요.
+    # # 코드를 작성하세요.
+    # course_schedule = []
+    # sot_list = sorted(course_list)
+    # course_schedule.append(sot_list[0])
+    # course_schedule = [course_list[0]]
+
+    # for i in range(1, len(course_list)):
+    #     if sot_list[i][1] > course_schedule[-1][1] and sot_list[i][0] > course_schedule[-1][0] and sot_list[i][0] > course_schedule[-1][1]:
+    #         course_schedule.append(sot_list[i])
+    #     elif sot_list[i][1] < course_schedule[-1][1]:
+    #         course_schedule.pop()
+    #         course_schedule.append(sot_list[i])
+    # return course_schedule
+
+
     course_schedule = []
-    sot_list = sorted(course_list)
-    course_schedule.append(sot_list[0])
-
-    for i in range(1, len(course_list)):
-        if sot_list[i][1] > course_schedule[-1][1] and sot_list[i][0] > course_schedule[-1][0] and sot_list[i][0] > course_schedule[-1][1]:
-            course_schedule.append(sot_list[i])
-        elif sot_list[i][1] < course_schedule[-1][1]:
-            course_schedule.pop()
-            course_schedule.append(sot_list[i])
+    sort_list = sorted(course_list, key = lambda x: x[1])
+    # course_list.sort(key = lambda x : (x[1], x[0]))
+    course_schedule.append(sort_list[0])
+    for i in sort_list:
+        if i[0] > course_schedule[-1][1]:
+            course_schedule.append(i)
     return course_schedule
-
-    
+        
 
 # 테스트
 print(course_selection([(4, 7), (2, 5), (1, 3), (8, 10), (5, 9), (2, 6), (13, 16), (9, 11), (1, 8)]))
