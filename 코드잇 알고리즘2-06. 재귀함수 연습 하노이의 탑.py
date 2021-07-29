@@ -62,10 +62,23 @@
 # 1번 원판을 1번 기둥에서 3번 기둥으로 이동
 # 2번 원판을 1번 기둥에서 2번 기둥으로 이동
 # 1번 원판을 3번 기둥에서 2번 기둥으로 이동
+
 # 3번 원판을 1번 기둥에서 3번 기둥으로 이동
+
 # 1번 원판을 2번 기둥에서 1번 기둥으로 이동
 # 2번 원판을 2번 기둥에서 3번 기둥으로 이동
 # 1번 원판을 1번 기둥에서 3번 기둥으로 이동
+
+#hanoi(4, 1, 4)
+
+# 1번 원판을 1번 기둥에서 2번 기둥으로 이동
+# 2번 원판을 1번 기둥에서 3번 기둥으로 이동
+# 1번 원판을 2번 기둥에서 3번 기둥으로 이동
+# 3번 원판을 1번 기둥에서 2번 기둥으로 이동
+# 1번 원판을 3번 기둥에서 1번 기둥으로 이동
+# 2번 원판을 3번 기둥에서 2번 기둥으로 이동
+# 1번 원판을 1번 기둥에서 2번 기둥으로 이동
+
 # 힌트를 최대한 보지 않고, 스스로의 힘으로 푸시는 것이 좋습니다. 만약 도저히 모르겠다면, 최소한의 힌트만 참고해주세요!
 
 
@@ -77,14 +90,20 @@ def hanoi(num_disks, start_peg, end_peg):
     # 코드를 입력하세요.
     if num_disks == 1:
         return move_disk(num_disks, start_peg, end_peg)
-    
+    # if num_disks == 2:
+    #     return move_disk(num_disks - 1, start_peg, end_peg - 1), move_disk(num_disks, start_peg, end_peg), hanoi(num_disks - 1, end_peg - 1, end_peg)
+    end_list = [1, 2, 3]
+    end_list.remove(start_peg)
+    end_list.remove(end_peg)
     if num_disks > 1:
-        return hanoi(num_disks-1, start_peg, end_peg-1), move_disk(num_disks, start_peg, end_peg), hanoi(num_disks-1, end_peg-1, end_peg)
+        return hanoi(num_disks - 1, start_peg, end_list[0]), move_disk(num_disks, start_peg, end_peg), hanoi(num_disks - 1, end_list[0], end_peg)
 
 # 테스트 코드 (포함하여 제출해주세요)
 hanoi(2, 1, 3)
 print("-----------------")
 hanoi(3, 1, 3)
+print("-----------------")
+hanoi(4, 1, 3)
 
 
 
