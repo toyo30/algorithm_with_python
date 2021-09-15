@@ -27,15 +27,52 @@
 
 
 # 높이 n개의 계단을 올라가는 방법을 리턴한다
+# def staircase(stairs, possible_steps):
+#     # 코드를 쓰세요
+#     list_stairs = [0, 1]
+    
+#     for i in range(1, stairs + 1):
+#         if i < possible_steps[0]:
+#             return None # 첫 번째 스탭보다 작으면 계단을 오를 수 없다. 
+#         elif i < possible_steps[1]:
+#             list_stairs.append(staircase((stairs - possible_steps[0]), possible_steps[:1]))
+#             return list_stairs[i]
+#         elif i < possible_steps[2]:
+#             list_stairs.append(staircase((stairs - possible_steps[0]), possible_steps[:2]) + staircase((stairs - possible_steps[1]), possible_steps[:2]))
+#             return list_stairs[i]
+#         else:
+#             list_stairs.append(staircase((stairs - possible_steps[0]), possible_steps) + staircase((stairs - possible_steps[1]), possible_steps) + staircase((stairs - possible_steps[2]), possible_steps))
+    
+#     return list_stairs[stairs]
+# print(staircase(5, [1, 2, 3]))
+# print(staircase(6, [1, 2, 3]))
+# print(staircase(7, [1, 2, 4]))
+# print(staircase(8, [1, 3, 5]))
+
+
 def staircase(stairs, possible_steps):
     # 코드를 쓰세요
-    list_stairs = []
-    
-    for i in range(1, stairs + 1):
-        
-    if stairs == 0 or stairs == 1:
-        return 1
-    return staircase(staris - possible_steps[0], possible_steps) + staircase(staris - possible_steps[1], possible_steps) + staircase(staris - possible_steps[2], possible_steps)
+    list_stairs = [0]
+
+    for i in range(possible_steps[0], stairs + 1):
+        if i < possible_steps[1]:
+            step_value = 1
+            list_stairs.append(step_value)
+        elif i == possible_steps[1]:
+            step_value = 2
+            list_stairs.append(step_value)
+        elif i < possible_steps[2]:
+            step_value = list_stairs[i - possible_steps[0]] +  list_stairs[i - possible_steps[1]]
+            list_stairs.append(step_value)
+        elif i == possible_steps[2]:
+            step_value = list_stairs[i - possible_steps[0]] +  list_stairs[i - possible_steps[1]] + 1
+            list_stairs.append(step_value)
+        else:
+            step_value = list_stairs[i - possible_steps[0]] +  list_stairs[i - possible_steps[1]] + list_stairs[i - possible_steps[2]]
+            list_stairs.append(step_value)
+    return list_stairs[stairs]
+
+
 print(staircase(5, [1, 2, 3]))
 print(staircase(6, [1, 2, 3]))
 print(staircase(7, [1, 2, 4]))
