@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function solution(strSignal) {
+            let answer = "YES";
+            for (let x of strSignal){
+                if(x==='(') stack.push(x);
+                else {
+                    if (stack.length===0) return "NO";
+                    stack.pop()
+                }
+            }
+            if (stack.length > 0) return "NO";
+            return answer;
+
+        }
+
+            
+        //     while(){
+        //         if 넣는다.
+        //            if 푸시할 수 있으면 푸시함
+        //            else 푸시할 수 없으면 잘못된 노를 리턴 
+
+        //         else 뺀다. 
+        //             if 밸 수 있으면 뺌
+        //             else 뺄 수 없으면 노를 리턴 
+
+        //         넣고 다 뺐는데, 남아있으면 노를 리턴 
+        //         0 이면 올바른 값을 리턴 
+        //     }
+            
+
+
+        //     return solution()
+        // }
+
+
+
+        let strSignal = "(()(()))(()";
+        console.log(strSignal)
+
+
+    </script>
+</body>
+</html>
