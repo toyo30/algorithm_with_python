@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(arr){
+                let answer;
+                let i = 100;
+                let sum = 0;
+                for(let x = 0; x < arr.length; x++){
+                    sum += arr[x]
+                };
+
+                for(let x = 0; x < arr.length - 1; x++){
+                    for(let t = x + 1; t < arr.length; t++){
+                        let number = arr[x] + arr[t]
+                        if(sum - number === 100){
+                            arr.splice(arr.indexOf(arr[x]),1)
+                            arr.splice(arr.indexOf(arr[t]),1)
+                            answer = arr;
+                        }
+                    } 
+                }
+            
+                
+                return answer;
+            }
+            
+            let arr=[20, 7, 23, 19, 10, 15, 25, 8, 13];
+            console.log(solution(arr));
+        </script>
+    </body>
+</html>
